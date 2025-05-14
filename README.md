@@ -8,6 +8,21 @@ BestChallenges is a web application inspired by BestCycling (www.bestcycling.com
 cycling challenges and track their progress. The application follows a monorepo structure with separate frontend 
 and backend services, both running in isolated Docker containers.
 
+## Documentation
+
+The project documentation is organized into several files:
+
+- **Functional Requirements**:
+  - [Functional Requirements](docs/functional_requirements.md): Detailed requirements for the application
+
+- **Feature Documentation**:
+  - [User Authentication](docs/user_authentication.md): Implementation details for user login and authentication
+
+- **Development Setup**:
+  - [PyCharm Setup Instructions](docs/pycharm_setup.md): Guide for setting up the project in PyCharm IDE
+
+These documents are regularly updated as new features are requested and implemented.
+
 ## Architecture
 
 The project follows Clean Architecture principles and SOLID design patterns:
