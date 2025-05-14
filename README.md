@@ -141,6 +141,23 @@ End-to-end tests are implemented using Playwright to test the entire application
 - **Framework**: Playwright
 - **Language**: TypeScript
 
+### Running E2E Tests with Docker
+
+You can run the end-to-end tests using Docker Compose without installing anything locally:
+
+```bash
+# Run the e2e tests in Docker
+docker-compose run e2e
+
+# View the test results
+open e2e/playwright-report/index.html
+```
+
+The e2e service in Docker Compose:
+- Automatically waits for the frontend and backend services to be ready
+- Runs the tests against the containerized services
+- Saves the test results and reports to your local machine
+
 ## Docker Configuration
 
 Both services are containerized using Docker and orchestrated with docker-compose.

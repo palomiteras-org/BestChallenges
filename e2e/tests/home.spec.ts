@@ -21,12 +21,17 @@ test('homepage has correct title and content', async ({ page }) => {
 });
 
 test('API health check is working', async ({ page, request }) => {
+  // When running in Docker, use the service name as the host
+  const apiUrl = process.env.DOCKER_ENV 
+    ? 'http://backend:8000/health'
+    : 'http://localhost:8000/health';
+
   // Make a direct request to the API health endpoint
-  const response = await request.get('http://localhost:8000/health');
-  
+  const response = await request.get(apiUrl);
+
   // Check that the response is successful
   expect(response.ok()).toBeTruthy();
-  
+
   // Check the response body
   const body = await response.json();
   expect(body).toEqual({ status: 'healthy' });

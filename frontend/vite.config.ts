@@ -12,6 +12,8 @@ export default defineConfig({
     watch: {
       usePolling: true,
     },
+    // Allow requests from the frontend hostname when running in Docker
+    allowedHosts: ['localhost', 'frontend'],
   },
   resolve: {
     alias: {
