@@ -6,7 +6,8 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 
 # Configuration
-SECRET_KEY = "YOUR_SECRET_KEY_HERE"  # In production, use a secure environment variable
+import os
+SECRET_KEY = os.getenv("SECRET_KEY", "default_secret_key")  # Replace "default_secret_key" with a secure default for development if needed
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
