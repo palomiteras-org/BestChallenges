@@ -1,7 +1,6 @@
 from typing import Optional
 from datetime import timedelta
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
 
 from app.domain.models import User
 from app.domain.repositories import UserRepository
