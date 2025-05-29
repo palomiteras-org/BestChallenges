@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordRequestForm
-from slowapi import Limiter
+from app.core.limiter import limiter
 from slowapi.util import get_remote_address
 
 from app.api.schemas import Token, UserLogin, UserResponse
@@ -10,9 +10,8 @@ from app.domain.models import User
 router = APIRouter()
 
 @router.post("/login", response_model=Token)
+@limiter.limit("5/minute")
 async def login(request: Request, form_data: OAuth2PasswordRequestForm = Depends()):
-    limiter = request.app.state.limiter
-    await limiter.limit("5/minute")(request)
     """
     Authenticate a user and return an access token.
 
