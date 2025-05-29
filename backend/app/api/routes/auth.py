@@ -7,14 +7,12 @@ from app.api.schemas import Token, UserLogin, UserResponse
 from app.services.auth import auth_service
 from app.domain.models import User
 
-# Create a rate limiter
-limiter = Limiter(key_func=get_remote_address)
-
 router = APIRouter()
 
 @router.post("/login", response_model=Token)
-@limiter.limit("5/minute")
 async def login(request: Request, form_data: OAuth2PasswordRequestForm = Depends()):
+    limiter = request.app.state.limiter
+    await limiter.limit("5/minute")(request)
     """
     Authenticate a user and return an access token.
 
