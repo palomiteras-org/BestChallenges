@@ -185,8 +185,8 @@ const StyledButton = styled.button<{
   ${({ $size }) => getSizeStyles($size)}
 
   /* Additional padding adjustments for icons */
-  padding-left: ${({ $hasLeftIcon, $size }) => $hasLeftIcon ? ($size === 'lg' ? '1.25rem' : $size === 'sm' ? '0.625rem' : '1rem') : null};
-  padding-right: ${({ $hasRightIcon, $size }) => $hasRightIcon ? ($size === 'lg' ? '1.25rem' : $size === 'sm' ? '0.625rem' : '1rem') : null};
+  padding-left: ${({ $hasLeftIcon, $size }) => $hasLeftIcon ? ($size === 'lg' ? '1.25rem' : $size === 'sm' ? '0.625rem' : '1rem') : undefined};
+  padding-right: ${({ $hasRightIcon, $size }) => $hasRightIcon ? ($size === 'lg' ? '1.25rem' : $size === 'sm' ? '0.625rem' : '1rem') : undefined};
   
   /* Optional ripple effect */
   &:after {
