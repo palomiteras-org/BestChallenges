@@ -17,9 +17,9 @@ const PageContainer = styled.div`
 const ContentContainer = styled.div`
   width: 100%;
   max-width: 32rem;
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeInLogin 0.5s ease-out forwards;
   
-  @keyframes fadeIn {
+  @keyframes fadeInLogin {
     from {
       opacity: 0;
       transform: translateY(10px);
