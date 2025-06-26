@@ -127,7 +127,7 @@ const Login: React.FC = () => {
 
     try {
       await login(usernameOrEmail, password);
-      navigate('/'); // Redirect to home page after successful login
+      navigate('/dashboard'); // Redirect to dashboard after successful login
     } catch (err) {
       // Error is handled in the AuthContext
       console.error('Login failed:', err);

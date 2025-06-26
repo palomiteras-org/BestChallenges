@@ -5,6 +5,9 @@ import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import { Button, Card } from './components/ui';
 import styled from 'styled-components';
+import Header from './components/Header';
+import Settings from './pages/Settings';
+import Dashboard from './pages/Dashboard';
 
 // Modern page layout components
 const PageContainer = styled.div`
@@ -107,37 +110,6 @@ const Home = () => {
   );
 };
 
-// Dashboard component (protected)
-const Dashboard = () => {
-  return (
-    <PageContainer>
-      <ContentContainer>
-        <Card hoverEffect shadow="lg" padding="lg">
-          <Logo>Dashboard</Logo>
-          <Text>
-            Welcome to your dashboard! Track your cycling challenges, view statistics,
-            and connect with other cyclists. This page is protected and only accessible when you're logged in.
-          </Text>
-          <ButtonContainer>
-            <Button
-              as={Link}
-              to="/"
-              variant="secondary"
-              gradient
-              iconLeft={<span>←</span>}
-            >
-              Back to Home
-            </Button>
-            <Button variant="accent" gradient>
-              View Challenges
-            </Button>
-          </ButtonContainer>
-        </Card>
-      </ContentContainer>
-    </PageContainer>
-  );
-};
-
 const App: React.FC = () => {
   return (
     <AuthProvider>
@@ -150,7 +122,15 @@ const App: React.FC = () => {
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } 
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
         />
       </Routes>
     </AuthProvider>
