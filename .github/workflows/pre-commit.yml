@@ -12,17 +12,18 @@ on:
 jobs:
   pre-commit-hooks-update:
     runs-on: ubuntu-latest
-
     steps:
-    - name: "Checkout"
-      uses: actions/checkout@v6
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v6
 
-    - name: "Setup Python"
-      uses: actions/setup-python@v6
-      with:
-        python-version: 3.x
+      - uses: actions/setup-python@v6
 
-    # Use the default name. The application uses this to find the right workflow.
-    - uses: pre-commit-ci/lite-action@v1.1.0
+      - uses: browniebroke/pre-commit-autoupdate-action@v1.0.1
+
+      - uses: peter-evans/create-pull-request@v8
+        if: always()
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update/pre-commit-hooks
+          title: Update pre-commit hooks
+          commit-message: "chore: update pre-commit hooks"
+          body: Update versions of pre-commit hooks to latest version.
